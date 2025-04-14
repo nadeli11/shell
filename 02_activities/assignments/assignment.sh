@@ -27,12 +27,15 @@ mkdir data
 mkdir raw
 mv ./rawdata ./data/raw
 # 3. List the contents of the ./data/raw directory
-cd data/raw
+cd data/raw/rawdata
 ls 
 # 4. In ./data/processed, create the following directories: server_logs, user_logs, and event_logs
 cd data
 mkdir processed
-mkdir server_logs user_logs event_logs
+cd processed
+mkdir server_logs 
+mkdir user_logs 
+mkdir event_logs
 # 5. Copy all server log files (files with "server" in the name AND a .log extension) from ./data/raw to ./data/processed/server_logs
 cp raw/rawdata/*server*.log processed/server_logs
 # 6. Repeat the above step for user logs and event logs
@@ -45,6 +48,7 @@ cd data/processed/user_logs
 rm *ipaddr*.* 
 # 8. Create a file named ./data/inventory.txt that lists all the files in the subfolders of ./data/processed
 cd data
+touch inventory.txt
 find processed -type f -print0 | tee inventory.txt
 
 ###########################################
